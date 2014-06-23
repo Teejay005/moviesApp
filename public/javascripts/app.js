@@ -47,7 +47,7 @@
 	module.filter('yearFilter', function(){
 		return function(input){
 			return input.filter(function(movie){
-				return movie.year < 2013
+				return movie.year < 2012
 			});
 		}
 	});
