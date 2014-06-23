@@ -14,7 +14,6 @@
   "description": "ERROR: No README data found!",
   "main": "app.js",
   "devDependencies": {
-    "fsevents":"~0.2.0",
     "karma-phantomjs-launcher":"*",
     "grunt-contrib-connect":"*",
     "grunt": "~0.4.5",
