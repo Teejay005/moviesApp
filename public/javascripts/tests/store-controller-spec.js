@@ -26,7 +26,7 @@ var mockStoreService;
 	});
 
 	it('should add two numbers', function(){
-		expect(2+1).toEqual(5);
+		expect(2+1).toEqual(4);
 	});
 
 });
