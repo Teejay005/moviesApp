@@ -31,10 +31,6 @@
     "grunt-protractor-runner": "~1.0.0",
     "grunt-protractor-webdriver": "~0.1.8"
   },
-  "engines": {
-     "node": "0.10.*",
-     "npm": "1.2.*"
-  },
   "author": "",
   "license": "BSD-2-Clause"
 }
