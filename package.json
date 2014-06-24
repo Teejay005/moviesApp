@@ -30,9 +30,7 @@
     "karma-chrome-launcher": "~0.1.4",
     "grunt-protractor-runner": "~1.0.0",
     "grunt-protractor-webdriver": "~0.1.8",
-    "selenium-standalone": "~2.42.0-2.9.0-1",
-    "grunt-shell": "~0.7.0",
-    "grunt-start-webdriver": "0.0.2"
+    "selenium-standalone": "~2.42.0-2.9.0-1"
   },
   "author": "",
   "license": "BSD-2-Clause"
