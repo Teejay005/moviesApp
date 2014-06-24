@@ -22,13 +22,11 @@ module.exports = function(grunt) {
       }
     },
 
-  webdriver: {
-    default_options: {
-      options: {
-        startCommand: 'webdriver-manager start'
-      }
-    }
-  },
+  protractor_webdriver: {
+    options: {
+      command: 'webdriver-manager start'
+   }
+ },
 
   protractor: {
     functional:{
@@ -47,15 +45,14 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-karma');
   grunt.loadNpmTasks('grunt-protractor-runner');
-  grunt.loadNpmTasks('grunt-start-webdriver');
-  // grunt.loadNpmTasks('grunt-contrib-connect');
+  grunt.loadNpmTasks('grunt-protractor-webdriver');
 
 
   grunt.registerTask('unit', function(){
     grunt.task.run('karma:unit');
   });
 
-  grunt.registerTask('functional',['webdriver','protractor:functional']);
+  grunt.registerTask('functional',['protractor:functional']);
    
   // Default task(s).
   grunt.registerTask('default', ['uglify','unit','functional']);
