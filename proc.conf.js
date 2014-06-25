@@ -10,7 +10,7 @@ exports.config = {
 
   // Selector for the element housing the angular app - this defaults to
   // body, but is necessary if ng-app is on a descendant of <body>  
-  rootElement: 'body',
+  rootElement: 'html',
 
   // Capabilities to be passed to the webdriver instance.
   capabilities: {

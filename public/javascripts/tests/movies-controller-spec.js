@@ -3,6 +3,8 @@ describe('Movies Controller', function(){
 	var mockMoviesService;
 	var scope;
 	var moviesPromise;
+	var defer;
+	var q;
 	var stubMovies = {
 		data: {
 		title: "Titanic",
@@ -12,26 +14,34 @@ describe('Movies Controller', function(){
 	beforeEach(function(){
 		module('store');
 
-		moviesPromise = jasmine.createSpyObj('moviesPromise', ['then']);
-		moviesPromise.then.andCallFake(function(callback){
-			return callback(stubMovies);
-		});
-
 		mockMoviesService = jasmine.createSpyObj('mockMoviesService', ['movies'])
-		mockMoviesService.movies.andReturn(moviesPromise);
 
 		module(function($provide){
 			$provide.value('MoviesService', mockMoviesService);
 		});
 
-		inject(function($controller, $rootScope){
+		inject(function($controller, $rootScope,$q){
+			q = $q;
+			defer = q.defer();
+			mockMoviesService.movies.andReturn(defer.promise);
 			scope = $rootScope.$new();
 			$controller('MoviesController', {$scope: scope, MoviesService: mockMoviesService})
 		});
 	});
 
 	it('should have list of all movies', function(){
+		defer.resolve(stubMovies);
 		scope.$apply();
-		expect(scope.movies).toEqual(stubMovies.data)
+		expect(scope.movies).toEqual(stubMovies.data);
+		expect(mockMoviesService.movies).toHaveBeenCalled();
+	});
+
+	it('should not have list of all movies', function(){
+		defer.reject('data not found');
+		scope.$apply();
+		expect(scope.errors).toEqual('data not found');
+		expect(mockMoviesService.movies).toHaveBeenCalled();
 	});
 });
+
+

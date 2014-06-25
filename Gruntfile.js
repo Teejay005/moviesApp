@@ -46,7 +46,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-karma');
   grunt.loadNpmTasks('grunt-protractor-runner');
   grunt.loadNpmTasks('grunt-protractor-webdriver');
-  // grunt.loadNpmTasks('grunt-contrib-connect');
 
 
   grunt.registerTask('unit', function(){
