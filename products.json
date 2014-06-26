@@ -1,0 +1,14 @@
+{
+	{
+			"name": 'Biscuit',
+			price: 2.95,
+			description: 'A nice biscuit',
+			canPurchase: false
+	},
+	{
+			"name": 'Rice',
+			price: 3.95,
+			description: 'Pakistan Rice',
+			canPurchase: true
+	}
+}

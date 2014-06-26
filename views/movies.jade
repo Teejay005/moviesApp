@@ -1,0 +1,20 @@
+extends layout
+
+block content
+  div(ng-controller = 'MoviesController')
+    div.panel.panel-default
+      div.panel-body
+        h3#move Total Movies: {{movies.length}}
+        input.form-control(type="text",placeholder="Search Movies", ng-model="searchText")
+    div.panel.panel-primary(ng-repeat="movie in movies | filter:searchText")
+      div.panel-heading
+        h2{{movie.title}}
+      div.panel-body.row
+        div.col-md-2
+          img.img-thumbmail.image-size(src="{{movie.images.poster}}")
+        div
+         h3 Overview 
+         {{movie.overview}}
+         a(href="{{movie.trailer}}", target="_blank") Watch trailer here
+         h3 Year {{movie.year}}
+

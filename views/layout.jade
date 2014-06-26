@@ -1,0 +1,19 @@
+doctype html
+html(ng-app='store')
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
+    script(type="text/javascript", src="/javascripts/lib/angular.min.js")
+    script(type="text/javascript", src="/javascripts/app.js")
+  body
+    nav.navbar.navbar-inverse.navbar-fixed-top(role="navigation")
+      ul.nav.nav-pills
+        li.active 
+          a(href="#") Home
+        li
+          a(href="#") Profiles
+        li
+          a(href="#") Contact
+      div.container
+    block content

@@ -1,0 +1,40 @@
+{
+  "name": "myapp",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "3.5.0",
+    "jade": "*",
+    "stylus": "*",
+    "requirejs": "*"
+  },
+  "description": "ERROR: No README data found!",
+  "main": "app.js",
+  "devDependencies": {
+    "karma-phantomjs-launcher": "*",
+    "grunt-contrib-connect": "*",
+    "grunt-webdriver": "*",
+    "grunt": "~0.4.5",
+    "grunt-contrib-jshint": "~0.10.0",
+    "grunt-contrib-nodeunit": "~0.3.3",
+    "grunt-contrib-uglify": "~0.4.0",
+    "karma": "~0.12.16",
+    "grunt-karma": "~0.8.3",
+    "karma-jasmine": "~0.1.5",
+    "karma-chai": "*",
+    "karma-mocha": "*",
+    "protractor": "*",
+    "karma-chrome-launcher": "~0.1.4",
+    "grunt-protractor-runner": "~1.0.0",
+    "grunt-protractor-webdriver": "~0.1.8",
+    "selenium-standalone": "~2.42.0-2.9.0-1"
+  },
+  "engines":{
+      "node": "0.10.x"
+    },
+  "author": "",
+  "license": "BSD-2-Clause"
+}
