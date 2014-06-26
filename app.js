@@ -31,7 +31,7 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
-app.get('/', routes.index);
+app.get('/', moviesList.movies);
 app.get('/users', user.list);
 app.get('/movies', moviesList.movies);
 
