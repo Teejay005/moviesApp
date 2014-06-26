@@ -32,6 +32,9 @@
     "grunt-protractor-webdriver": "~0.1.8",
     "selenium-standalone": "~2.42.0-2.9.0-1"
   },
+  "engines":{
+      "node": "0.10.x"
+    },
   "author": "",
   "license": "BSD-2-Clause"
 }

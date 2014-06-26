@@ -33,6 +33,7 @@ describe('Movies Controller', function(){
 		defer.resolve(stubMovies);
 		scope.$apply();
 		expect(scope.movies).toEqual(stubMovies.data);
+		expect(scope.errors).toBeUndefined();
 		expect(mockMoviesService.movies).toHaveBeenCalled();
 	});
 
@@ -40,6 +41,7 @@ describe('Movies Controller', function(){
 		defer.reject('data not found');
 		scope.$apply();
 		expect(scope.errors).toEqual('data not found');
+		expect(scope.movies).toBeUndefined();
 		expect(mockMoviesService.movies).toHaveBeenCalled();
 	});
 });
