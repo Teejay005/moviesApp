@@ -6,5 +6,9 @@ exports.saveMovie = function(req, resp){
 
 
 exports.findAllMovies = function(req, res){
-	res.send(saveToDB.findAllMovies());
+	var moviesArray;
+	saveToDB.findAllMovies(function(movies){
+		res.send(movies);
+	});
+
 };

@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/tech4Arica');
+mongoose.connect('mongodb://localhost/tech4Africa');
 var db = mongoose.connection;
 
 var MovieSchema = mongoose.Schema({
@@ -9,26 +9,19 @@ var MovieSchema = mongoose.Schema({
     trailer: String,
     year: String
 });
-var movieSchema = mongoose.model('Movie', MovieSchema);
+var movieModel = mongoose.model('Movie', MovieSchema);
 
 exports.saveMovie = function(movie){
-	var newMovie = new movieSchema(movie);
-
-	db.once('open', function(err, db){
-		newMovie.save(function(err, movie){
-			if(err) console.log(movie);
-		});
+	var newMovie = new movieModel(movie);	
+	newMovie.save(function(err, movie){
+		if(err) console.log(err);
 	});
 };
 
-exports.findAllMovies = function(){
-	var movies;
-	db.once('open', function(err,db){
-		db.movies.find(function(err,moviesFromDB){
-			movies = moviesFromDB;
-		});
-	});
-	return movies
+exports.findAllMovies = function(callback){
+	movieModel.find({},function(err,moviesFromDB){
+		callback(moviesFromDB);
+    });
 };
 
 

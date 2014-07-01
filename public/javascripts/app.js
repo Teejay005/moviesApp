@@ -48,8 +48,14 @@
 	});
 
 	module.controller('MoviesController', function($scope, MoviesService){
-		MoviesService.movies().then(function(movies){
+		MoviesService.find().then(function(movies){
 			$scope.movies = movies.data;
+		}, function(error){
+			$scope.errors = error;
+		});
+
+		function saveMovies(movies){
+			console.log(Object.keys(movies).length);
 			angular.forEach($scope.movies, function(movie){
 				MoviesService.save({
 					title: movie.title,
@@ -59,9 +65,7 @@
     				year: movie.year
 				});
 			});
-		}, function(error){
-			$scope.errors = error;
-		});
+		}
 	});
 
 	module.filter('yearFilter', function(){
