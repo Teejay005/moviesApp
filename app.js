@@ -9,6 +9,7 @@ var user = require('./routes/user');
 var moviesList = require('./routes/movies')
 var http = require('http');
 var path = require('path');
+var db = require('./routes/mondbADO')
 
 var app = express();
 
@@ -34,6 +35,8 @@ if ('development' == app.get('env')) {
 app.get('/', moviesList.movies);
 app.get('/users', user.list);
 app.get('/movies', moviesList.movies);
+app.post('/saveMovie', db.saveMovie);
+app.get('/findMovies', db.findAllMovies);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

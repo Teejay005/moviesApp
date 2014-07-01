@@ -30,11 +30,13 @@
     "karma-chrome-launcher": "~0.1.4",
     "grunt-protractor-runner": "~1.0.0",
     "grunt-protractor-webdriver": "~0.1.8",
-    "selenium-standalone": "~2.42.0-2.9.0-1"
+    "selenium-standalone": "~2.42.0-2.9.0-1",
+    "mongodb": "~1.4.7",
+    "mongoose": "~3.8.12"
   },
-  "engines":{
-      "node": "0.10.x"
-    },
+  "engines": {
+    "node": "0.10.x"
+  },
   "author": "",
   "license": "BSD-2-Clause"
 }

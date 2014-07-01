@@ -25,6 +25,9 @@
 
 	module.factory('MoviesService', function($http){
 		var api = 'http://api.trakt.tv/movies/trending.json/727f30091e6f129b9ef01979b5e0c898?callback=JSON_CALLBACK';
+		var saveURL = "http://localhost:3000/saveMovie"
+		var findURL = "http://localhost:3000/findMovies"
+		
 		return {
 			movies: function(){
 				return $http.jsonp(api);
@@ -32,6 +35,14 @@
 
 			data: function(){
 				return data;
+			},
+
+			save: function(movie){
+				return $http.post(saveURL, movie);
+			},
+
+			find: function(){
+				return $http.get(findURL);
 			}
 		}
 	});
@@ -39,6 +50,15 @@
 	module.controller('MoviesController', function($scope, MoviesService){
 		MoviesService.movies().then(function(movies){
 			$scope.movies = movies.data;
+			angular.forEach($scope.movies, function(movie){
+				MoviesService.save({
+					title: movie.title,
+    				poster: movie.images.poster,
+    				overview: movie.overview,
+    				trailer: movie.trailer,
+    				year: movie.year
+				});
+			});
 		}, function(error){
 			$scope.errors = error;
 		});
