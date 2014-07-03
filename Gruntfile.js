@@ -13,6 +13,13 @@ module.exports = function(grunt) {
       }
     },
 
+    express: {
+      dev: {
+       options: {
+        script: 'app.js'
+       }
+     }
+    },
    
     karma: {  
       unit: {
@@ -21,6 +28,16 @@ module.exports = function(grunt) {
         singleRun: true
       }
     },
+
+  connect: {
+    dev: {
+      options: {
+        port: 3000,
+        base: 'public'
+      },
+      all: {}
+    }
+  },
 
   protractor_webdriver: {
     options: {
@@ -36,7 +53,8 @@ module.exports = function(grunt) {
         args: {
            specs: ['spec/*-spec.js'],
         }
-      }
+      },
+      run: {}
     }
   }
   });
@@ -45,14 +63,20 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-karma');
   grunt.loadNpmTasks('grunt-protractor-runner');
+  grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-protractor-webdriver');
+  grunt.loadNpmTasks('grunt-express-server');
 
 
   grunt.registerTask('unit', function(){
     grunt.task.run('karma:unit');
   });
 
-  grunt.registerTask('functional',['protractor_webdriver','protractor:functional']);
+  grunt.registerTask('functional', function(){
+    grunt.task.run('express:dev');
+    grunt.task.run('protractor:functional');
+  });
+
    
   // Default task(s).
   grunt.registerTask('default', ['uglify','unit','functional']);

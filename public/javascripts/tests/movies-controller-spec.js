@@ -14,7 +14,7 @@ describe('Movies Controller', function(){
 	beforeEach(function(){
 		module('store');
 
-		mockMoviesService = jasmine.createSpyObj('mockMoviesService', ['movies'])
+		mockMoviesService = jasmine.createSpyObj('mockMoviesService', ['movies','find'])
 
 		module(function($provide){
 			$provide.value('MoviesService', mockMoviesService);
@@ -23,7 +23,7 @@ describe('Movies Controller', function(){
 		inject(function($controller, $rootScope,$q){
 			q = $q;
 			defer = q.defer();
-			mockMoviesService.movies.andReturn(defer.promise);
+			mockMoviesService.find.andReturn(defer.promise);
 			scope = $rootScope.$new();
 			$controller('MoviesController', {$scope: scope, MoviesService: mockMoviesService})
 		});
@@ -34,7 +34,7 @@ describe('Movies Controller', function(){
 		scope.$apply();
 		expect(scope.movies).toEqual(stubMovies.data);
 		expect(scope.errors).toBeUndefined();
-		expect(mockMoviesService.movies).toHaveBeenCalled();
+		expect(mockMoviesService.find).toHaveBeenCalled();
 	});
 
 	it('should not have list of all movies', function(){
@@ -42,7 +42,7 @@ describe('Movies Controller', function(){
 		scope.$apply();
 		expect(scope.errors).toEqual('data not found');
 		expect(scope.movies).toBeUndefined();
-		expect(mockMoviesService.movies).toHaveBeenCalled();
+		expect(mockMoviesService.find).toHaveBeenCalled();
 	});
 });
 

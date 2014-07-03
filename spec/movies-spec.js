@@ -6,6 +6,6 @@ describe('Movies', function(){
 		var movies = element(by.binding('movies.length'))
 		// var title = element(by.id('move'));
 
-		expect(movies.getText()).toEqual('Movies');
+		expect(movies.getText()).toEqual('Total Movies: 265');
 	});
 });

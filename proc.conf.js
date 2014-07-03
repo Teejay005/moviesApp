@@ -2,9 +2,9 @@ exports.config = {
 
   seleniumServerJar: 'node_modules/selenium-standalone/.selenium/2.42.0/server.jar',
 
-  chromeDriver: 'node_modules/selenium-standalone/.selenium/2.42.0/chromedriver',
+  chromeDriver: '/usr/local/bin/chromedriver',
   // The address of a running selenium server.
-  seleniumAddress: 'http://localhost:4444/wd/hub',
+  // seleniumAddress: 'http://localhost:4444/wd/hub',
 
   baseUrl: 'http://localhost:3000',
 
